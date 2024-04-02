@@ -36,7 +36,7 @@ import json
 import transformers
 from modeling_phi import PhiForCausalLM
 from tokenization_codegen import CodeGenTokenizer
-
+#from transformers import AutoModelForCausalLM, AutoTokenizer
 
 if torch.cuda.is_available():
     device = "cuda"
@@ -126,6 +126,11 @@ def example_formating(question, answer=None, candidate_answers=None, prompt_type
             prompt = f"Question: {question}\nAnswer: {answer}"
         else:
             prompt = f"Question: {question}\nAnswer:"
+    #elif prompt_type == "v3.0"
+    #    if answer is not None:
+    #        prompt = f"Question: {question}\nSummarize:{summarizer(question)}\nAnswer: {answer}"
+    #    else:
+    #        prompt = f"Question: {question}\nSummarize:{summarizer(question)}\nAnswer:"
     else:
         raise NotImplementedError
     return prompt
@@ -162,11 +167,16 @@ def get_model(
     assert base_model, (
         "Please specify a --base_model, e.g. --base_model='bigcode/starcoder'"
     )
-
+    #tokenizer = AutoTokenizer.from_pretrained(base_model, trust_remote_code=True)
     tokenizer = CodeGenTokenizer.from_pretrained(base_model)
     tokenizer.pad_token_id = tokenizer.eos_token_id
     tokenizer.pad_token = tokenizer.eos_token
 
+    #model = AutoModelForCausalLM.from_pretrained(
+    #    base_model,
+    #    trust_remote_code=True,
+    #    device_map="auto",
+    #)
     model = PhiForCausalLM.from_pretrained(
         base_model,
         device_map="auto",
