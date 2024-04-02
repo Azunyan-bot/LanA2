@@ -21,6 +21,22 @@ if __name__ == "__main__":
     local_dir = "model/phi-2"
     download_from_hf_hub(repo_id=repo_id, use_auth_token=use_auth_token, local_dir=local_dir)
 
+    #repo_id = "mistralai/Mistral-7B-v0.1"
+    #local_dir = "model/Mistral-7B-v0.1"
+    #download_from_hf_hub(repo_id=repo_id, use_auth_token=use_auth_token, local_dir=local_dir)
+
+    #repo_id = "hywu/Camelidae-8x7B"
+    #local_dir = "model/Camelidae-8x7B"
+    #download_from_hf_hub(repo_id=repo_id, use_auth_token=use_auth_token, local_dir=local_dir)
+
+    #repo_id = "OrionZheng/openmoe-8b"
+    #local_dir = "model/openmoe-8b"
+    #download_from_hf_hub(repo_id=repo_id, use_auth_token=use_auth_token, local_dir=local_dir)
+    
+    #repo_id = "meta-llama/Llama-2-7b-hf"
+    #local_dir = "model/Llama-2-7b-hf"
+    #download_from_hf_hub(repo_id=repo_id, use_auth_token=use_auth_token, local_dir=local_dir)
+
     # embedder
     repo_id = "BAAI/bge-small-en-v1.5"
     local_dir = "model/bge-small-en-v1.5"
